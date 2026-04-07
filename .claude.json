@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "suno": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": [
+        "--from",
+        "/Users/radekdrlik/_my_projects/song-creator/mcp-suno",
+        "suno-mcp"
+      ],
+      "env": {
+        "SUNO_API_KEY": "${SUNO_API_KEY}"
+      }
+    }
+  }
+}

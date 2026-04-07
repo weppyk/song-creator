@@ -1,0 +1,50 @@
+{
+  "skill_name": "suno-lyrics",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Napiš mi křesťanskou píseň plnou vášně a oddanosti Bohu. Chci aby to bylo silné, emotivní a oslavovalo Ježíše.",
+      "expected_output": "3 title options in Czech and Slovak, full lyrics in Czech with Suno tags, full lyrics in Slovak with Suno tags, Suno style prompt suggestions",
+      "files": [],
+      "assertions": [
+        {"name": "has_czech_lyrics_with_verse_tag", "description": "Output contains Czech lyrics section with at least one [Verse] tag"},
+        {"name": "has_slovak_lyrics_with_verse_tag", "description": "Output contains Slovak lyrics section with at least one [Verse] tag"},
+        {"name": "has_chorus_tag", "description": "Output contains [Chorus] tag in both language sections"},
+        {"name": "has_three_title_options_per_language", "description": "At least 3 title options provided for both Czech and Slovak"},
+        {"name": "has_suno_style_prompt", "description": "Output includes a Suno AI style prompt in English"},
+        {"name": "czech_and_slovak_are_distinct", "description": "Czech and Slovak lyrics are not identical — genuinely adapted versions"},
+        {"name": "christian_theme_present", "description": "Lyrics clearly contain Christian/Jesus/God themes as requested"}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Chcem pieseň o Božej láske, niečo čo ťa chytí za srdce a dá ti slzy do očí. Pomalá balada.",
+      "expected_output": "3 title options in Czech and Slovak, full lyrics in Czech with Suno tags, full lyrics in Slovak with Suno tags, Suno style prompt as slow ballad",
+      "files": [],
+      "assertions": [
+        {"name": "has_czech_lyrics_with_verse_tag", "description": "Output contains Czech lyrics section with at least one [Verse] tag"},
+        {"name": "has_slovak_lyrics_with_verse_tag", "description": "Output contains Slovak lyrics section with at least one [Verse] tag"},
+        {"name": "has_chorus_tag", "description": "Output contains [Chorus] tag in both language sections"},
+        {"name": "has_three_title_options_per_language", "description": "At least 3 title options provided for both Czech and Slovak"},
+        {"name": "has_suno_style_prompt", "description": "Output includes a Suno AI style prompt in English"},
+        {"name": "czech_and_slovak_are_distinct", "description": "Czech and Slovak lyrics are not identical — genuinely adapted versions"},
+        {"name": "suno_prompt_reflects_ballad_style", "description": "Suno style prompt includes slow/ballad indicators as the user requested"}
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Song o víře která přežije i tu nejtemnější noc. Rockový náboj, ale duchovní téma.",
+      "expected_output": "3 title options in Czech and Slovak, full rock-flavored lyrics in Czech with Suno tags, full lyrics in Slovak with Suno tags, Suno style prompt matching rock worship energy",
+      "files": [],
+      "assertions": [
+        {"name": "has_czech_lyrics_with_verse_tag", "description": "Output contains Czech lyrics section with at least one [Verse] tag"},
+        {"name": "has_slovak_lyrics_with_verse_tag", "description": "Output contains Slovak lyrics section with at least one [Verse] tag"},
+        {"name": "has_chorus_tag", "description": "Output contains [Chorus] tag in both language sections"},
+        {"name": "has_three_title_options_per_language", "description": "At least 3 title options provided for both Czech and Slovak"},
+        {"name": "has_suno_style_prompt", "description": "Output includes a Suno AI style prompt in English"},
+        {"name": "czech_and_slovak_are_distinct", "description": "Czech and Slovak lyrics are not identical — genuinely adapted versions"},
+        {"name": "suno_prompt_reflects_rock_style", "description": "Suno style prompt includes rock indicators matching the requested energy"}
+      ]
+    }
+  ]
+}
