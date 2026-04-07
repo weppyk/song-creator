@@ -331,23 +331,37 @@ If the user confirms, use the `mcp__suno__generate_music` tool with:
 - `title` = the chosen title (max 80 chars for V4)
 - `callback_url = "https://httpbin.org/post"` (placeholder — we poll manually)
 
-After submitting, immediately start polling with `mcp__suno__get_task_status` using the returned `taskId`. Poll every ~15 seconds until `status` reaches `SUCCESS` (or a failure state).
+After submitting, poll once with `mcp__suno__get_task_status` using the returned `taskId`.
 
 **Status progression:** `PENDING` → `TEXT_SUCCESS` → `FIRST_SUCCESS` → `SUCCESS`
 
-When `SUCCESS`, present the results:
+**Share stream URLs as soon as they appear** — they are available from `TEXT_SUCCESS` onward, before the download is ready. Present them immediately so the user can listen without waiting:
 
 ```
-Hotovo! Suno vygeneroval 2 verze:
+Generuje se... Streamy jsou už dostupné:
+
+**[Title] — verze 1** (stream)
+🎵 [sourceStreamAudioUrl]
+
+**[Title] — verze 2** (stream)
+🎵 [sourceStreamAudioUrl]
+
+Chceš počkat na finální stažitelné soubory? (ještě ~1–2 min)
+```
+
+Do NOT sleep or auto-poll in a loop. After each poll, report the status and ask the user if they want to poll again. When `SUCCESS`, present the final download URLs:
+
+```
+Hotovo! Finální verze ke stažení:
 
 **[Title] — verze 1** (X:XX min)
-🎵 [audio URL]
+🎵 [sourceAudioUrl]
 
 **[Title] — verze 2** (X:XX min)
-🎵 [audio URL]
+🎵 [sourceAudioUrl]
 ```
 
-Use `sourceAudioUrl` from `sunoData` for the audio links (direct Suno CDN URLs).
+Use `sourceAudioUrl` for download links and `sourceStreamAudioUrl` for stream links (direct Suno CDN URLs).
 
 If generation fails (`CREATE_TASK_FAILED`, `GENERATE_AUDIO_FAILED`, `SENSITIVE_WORD_ERROR`), report the `errorMessage` and offer to retry with adjusted parameters.
 
